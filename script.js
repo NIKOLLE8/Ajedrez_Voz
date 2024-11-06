@@ -73,31 +73,37 @@ function clearSelection() {
   });
 }
 
-// Iniciar reconocimiento de voz
-function startVoiceRecognition() {
-  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  recognition.lang = 'es-ES';
-  recognition.onresult = event => {
-    const command = event.results[0][0].transcript.toLowerCase();
-    if (command.startsWith('mover a')) {
-      const [_, colLetter, rowNumber] = command.split(' ');
-      movePiece(parseInt(rowNumber) - 1, colLetter.charCodeAt(0) - 'a'.charCodeAt(0));
+// Selección de una casilla mediante comando de voz
+function selectByVoice(row, col) {
+    const cell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+    if (cell) {
+      selectCell(cell);
+      giveFeedback(cell);  // Da retroalimentación sobre la selección
+    } else {
+      const utterance = new SpeechSynthesisUtterance("Casilla no encontrada.");
+      window.speechSynthesis.speak(utterance);
     }
-  };
-  recognition.start();
-}
+  }
 
 // Mover pieza
 function movePiece(targetRow, targetCol) {
   if (selectedCell) {
     const targetCell = document.querySelector(`.cell[data-row="${targetRow}"][data-col="${targetCol}"]`);
     if (targetCell && targetCell.classList.contains('move-option')) {
-      targetCell.innerHTML = selectedCell.innerHTML;
-      selectedCell.innerHTML = '';
-      clearSelection();
+        targetCell.innerHTML = selectedCell.innerHTML;
+        selectedCell.innerHTML = '';
+        giveFeedback(targetCell);  // Confirma el movimiento
+        clearSelection();
+      } else {
+        const utterance = new SpeechSynthesisUtterance("Movimiento inválido.");
+        window.speechSynthesis.speak(utterance);
+      }
+    } else {
+      const utterance = new SpeechSynthesisUtterance("Por favor selecciona una pieza primero.");
+      window.speechSynthesis.speak(utterance);
     }
   }
-}
+  
 
 // Inicializar tablero y reconocimiento de voz
 renderBoard();
