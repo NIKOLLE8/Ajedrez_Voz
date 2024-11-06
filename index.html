@@ -1,27 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ajedrez Reducido</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajedrez con Control de Voz</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .game-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .status {
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e8f5e9;
+            text-align: center;
+        }
+
+        #board {
+            width: 400px;
+            height: 400px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff3e0;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+
+        .instructions h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .instructions ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin: 5px 0;
+        }
+
+        .piece {
+            transition: all 0.3s ease;
+        }
+
+        .piece:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
-  <div class="board-container">
-    <div class="row-labels">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
+    <div class="game-container">
+        <h1>Ajedrez con Control de Voz</h1>
+        
+        <div class="status" id="status">
+            Estado: Esperando activar el control de voz
+        </div>
+
+        <div id="board"></div>
+
+        <div class="controls">
+            <button id="toggleVoice">Activar/Desactivar Voz</button>
+        </div>
+
+        <div class="instructions">
+            <h2>Instrucciones:</h2>
+            <ul>
+                <li>Haz clic en el botón para activar el control de voz</li>
+                <li>Di comandos como:
+                    <ul>
+                        <li>"peón a 5 4"</li>
+                        <li>"reina a 3 4"</li>
+                        <li>"alfil a 2 6"</li>
+                    </ul>
+                </li>
+                <li>Los números van del 1 al 8 para ambos ejes</li>
+                <li>Asegúrate de dar permiso al navegador para usar el micrófono</li>
+            </ul>
+        </div>
     </div>
-    <div class="board" id="board"></div>
-    <div class="col-labels">
-      <div>A</div>
-      <div>B</div>
-      <div>C</div>
-      <div>D</div>
-    </div>
-  </div>
-  <script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
