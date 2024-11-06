@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajedrez con Control de Voz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Ajedrez con Control de Voz</h1>
+        
+        <div class="status" id="status">
+            Estado: Esperando activar el control de voz
+        </div>
+
+        <div class="board-wrapper">
+            <div class="row-labels">
+                <div>8</div>
+                <div>7</div>
+                <div>6</div>
+                <div>5</div>
+                <div>4</div>
+                <div>3</div>
+                <div>2</div>
+                <div>1</div>
+            </div>
+            <div id="board"></div>
+            <div class="column-labels">
+                <div>a</div>
+                <div>b</div>
+                <div>c</div>
+                <div>d</div>
+                <div>e</div>
+                <div>f</div>
+                <div>g</div>
+                <div>h</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="toggleVoice">Activar/Desactivar Voz</button>
+        </div>
+
+        <div class="instructions">
+            <h2>Instrucciones:</h2>
+            <ul>
+                <li>Haz clic en el botón para activar el control de voz</li>
+                <li>Di comandos como:
+                    <ul>
+                        <li>"peón a c5"</li>
+                        <li>"reina a e4"</li>
+                        <li>"alfil a f6"</li>
+                    </ul>
+                </li>
+                <li>Usa letras (a-h) para columnas y números (1-8) para filas</li>
+                <li>Asegúrate de dar permiso al navegador para usar el micrófono</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js">
+        // Aquí va el código JavaScript
+    </script>
+</body>
+</html>
