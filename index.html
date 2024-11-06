@@ -23,12 +23,12 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
-        .status {
+        .board-wrapper {
+            display: grid;
+            grid-template-columns: 30px 400px 30px;
+            grid-template-rows: 400px 30px;
+            gap: 5px;
             margin: 20px 0;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #e8f5e9;
-            text-align: center;
         }
 
         #board {
@@ -37,6 +37,36 @@
             border: 2px solid #333;
             border-radius: 4px;
             overflow: hidden;
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .row-labels {
+            display: grid;
+            grid-template-rows: repeat(8, 1fr);
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .column-labels {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            align-items: center;
+            justify-items: center;
+            font-weight: bold;
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .status {
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e8f5e9;
+            text-align: center;
         }
 
         .controls {
@@ -99,7 +129,29 @@
             Estado: Esperando activar el control de voz
         </div>
 
-        <div id="board"></div>
+        <div class="board-wrapper">
+            <div class="row-labels">
+                <div>8</div>
+                <div>7</div>
+                <div>6</div>
+                <div>5</div>
+                <div>4</div>
+                <div>3</div>
+                <div>2</div>
+                <div>1</div>
+            </div>
+            <div id="board"></div>
+            <div class="column-labels">
+                <div>a</div>
+                <div>b</div>
+                <div>c</div>
+                <div>d</div>
+                <div>e</div>
+                <div>f</div>
+                <div>g</div>
+                <div>h</div>
+            </div>
+        </div>
 
         <div class="controls">
             <button id="toggleVoice">Activar/Desactivar Voz</button>
@@ -111,17 +163,18 @@
                 <li>Haz clic en el botón para activar el control de voz</li>
                 <li>Di comandos como:
                     <ul>
-                        <li>"peón a 5 4"</li>
-                        <li>"reina a 3 4"</li>
-                        <li>"alfil a 2 6"</li>
+                        <li>"peón a c5"</li>
+                        <li>"reina a e4"</li>
+                        <li>"alfil a f6"</li>
                     </ul>
                 </li>
-                <li>Los números van del 1 al 8 para ambos ejes</li>
+                <li>Usa letras (a-h) para columnas y números (1-8) para filas</li>
                 <li>Asegúrate de dar permiso al navegador para usar el micrófono</li>
             </ul>
         </div>
     </div>
-
-    <script src="script.js"></script>
+    <script src="script.js">
+        // Aquí va el código JavaScript
+    </script>
 </body>
 </html>
